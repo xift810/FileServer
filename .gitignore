@@ -1,0 +1,4 @@
+data/
+goaccess/logs/
+goaccess/report/
+!goaccess/data/

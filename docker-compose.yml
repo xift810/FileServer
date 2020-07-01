@@ -1,0 +1,30 @@
+version: "3.3"
+
+services:
+  goaccess:
+    image: allinurl/goaccess:latest
+    container_name: log
+    command:
+    - goaccess
+    - --no-global-config
+    - --config-file=/goaccess/goaccess.conf
+    - --log-file=/goaccess/access.log
+    - --num-tests=0 
+    volumes:
+      - ./goaccess/data:/goaccess
+      - ./goaccess/report/index.html:/goaccess/index.html
+      - ./goaccess/logs/access.log:/goaccess/access.log
+    ports:
+    - 7890:7890
+  nginx:
+    image: nginx:latest
+    container_name: fileserver
+    restart: always
+    volumes:
+    - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    - ./data/launchfiles:/var/www/launchfiles
+    - ./data/lessonData :/var/www/lessonData 
+    - ./goaccess/logs/access.log:/var/log/nginx/access.log
+    - ./goaccess/report:/var/www/logreport
+    ports:
+    - 3002:8000
