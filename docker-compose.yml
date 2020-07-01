@@ -22,7 +22,7 @@ services:
     restart: always
     volumes:
     - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
-    - ./data/launchfiles:/var/www/launchFiles
+    - ./data/launchFiles:/var/www/launchFiles
     - ./data/lessonData :/var/www/lessonData
     - ./goaccess/logs/access.log:/var/log/nginx/access.log
     - ./goaccess/report:/var/www/logreport
