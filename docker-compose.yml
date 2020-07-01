@@ -23,7 +23,7 @@ services:
     volumes:
     - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
     - ./data/launchFiles:/var/www/launchFiles
-    - ./data/lessonData :/var/www/lessonData
+    - ./data/lessonData:/var/www/lessonData
     - ./goaccess/logs/access.log:/var/log/nginx/access.log
     - ./goaccess/report:/var/www/logreport
     ports:
